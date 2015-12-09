@@ -35,7 +35,7 @@ describe('Array of Tests', function() {
         		beverages.should.have.property('tea').with.length(3);
             })
         })
-        describe('Tests of the profEngine', function(){
+        describe('Tests of the proofEngine', function(){
             it('Tests the math game itself', function(){
                 expect(app).to.have.property('test')
                 app.test2.should.equal(2)
