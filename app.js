@@ -1,3 +1,15 @@
+/*
+this is how to make all the stuff form this file available to the other js files 
+All js modules have an exports property that can be filled with whatever needs to be public
+*/
+exports.test = function(){ //adding function to exports
+	return 1+1
+};
+exports.test2 = 2; //adding new variables to exports
+
+var message = "testmessage"
+exports.message = message; // "pushing" variables into exports
+
 var Set = function (name, firstEquivalence) {
 	this.name = name;
 	this.elements = [];
