@@ -2,40 +2,33 @@
 <html>
 <head>
 	<title>Front End</title>
-	<script type="text/javascript" src="../../angular.js"></script>
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<!-- // <script type="text/javascript" src="drag.js"></script> -->
-	<script type="text/javascript" src="./bundle.js"></script>
+	<!-- // <script type="text/javascript" src="../../angular.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="../../style.css">
+	<script type="text/javascript" src="drag.js"></script>
+	<!-- // <script type="text/javascript" src="./bundle.js"></script> -->
 </head>
-<body ng-app="homepage">
-	<h1>The Tester Front End</h1>
-{{2+2}}
-	<div id="wrapper" ng-controller="proofController as pC">
-		<span>
-			This is a test of the angular links
-			2+2 = {{2+2}}
-
-		</span>
+<body >
+	<h1>Drag and drop vanilla</h1>
+	<div id="wrapper">
 
 		<div id="old">
-		<div class ="sets" draggable="true" ondragstart ="drag(event)">tester</div>
 			<h2>Existing SETS</h2>
-			<div ng-repeat="set in pC.oldSets track by $index" draggable='true' ondragstart='pC.drag(event)' class="sets">{{set.equivalents[0]}}</div>
+			<div draggable='true' ondragstart='drag(event)' class="sets">item1</div>
 		</div>	
 		<div id="elem">
 			<h2>Elements</h2>
-			<div ng-repeat="element in pC.elements track by $index" draggable='true' ondragstart='pC.drag(event)' class="elements" >{{element.name}}</div>
+			<div draggable='true' ondragstart='drag(event)' class="elements" >item2</div>
 		</div>
 		<div id="new">
 			<h2>Created SETS</h2>
-			<div ng-repeat="set in pC.newSets track by $index" draggable='true' ondragstart='pC.drag(event)' class="sets">{{set.equivalents[0]}}</div>
+			<div draggable='true' ondragstart='drag(event)' class="sets"></div>
 		</div>
 		<div id="bar">
 			<!-- <div id="slot1" class="emptyslot" ng-repeat="set in pC.selectedSets track by $index" ondrop="pC.drop(event)" ondragover="pC.dragover(event)">{{set.equivalents[0]}}</div> -->
-			<div id="slot1" class="emptyslot" ondragover="pC.dragover(event)" ondrop="pC.drop(event)"></div>
+			<div id="slot1" class="emptyslot" ondragover="dragover(event)" ondrop="drop(event)"></div>
 			<button>putIn</button>
 			<button>Union</button>
-			<button ng-click="pC.clicked(set)">tester</button>
+			<button>tester</button>
 		</div>
 	</div>
 </body>
