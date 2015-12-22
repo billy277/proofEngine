@@ -30,4 +30,4 @@ var union = function(name, x, y) {
 
 module.exports = {
 	union: union
-}
+}				
