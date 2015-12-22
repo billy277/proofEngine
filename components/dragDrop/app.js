@@ -1,12 +1,12 @@
 var app 		= angular.module('homepage', []);
-var operations 	= require('./operations.js');
-var setEngine 	= require('./setEngine.js');
-
+var operations 	= require('../operations.js');
+var setEngine 	= require('../setEngine.js');
 
 app.controller("proofController", function($scope){
 	this.oldSets	 = [];
 	this.elements	 = [];
 	this.newSets	 = [];
+	this.selectedSets = [];
 	this.groupname = 'group';
 
 	var A = new setEngine.Set(this.groupname, 'A');
@@ -24,9 +24,27 @@ app.controller("proofController", function($scope){
 	this.elements.push(y);
 	this.elements.push(z);
 
-	function clicked(set){
+	// this.drag = function (ev){
+	// ev.dataTransfer.setData('text/html', ev.target);
+	// };
+
+	// this.drop = function (ev){
+	// 	ev.preventDefault();
+	// 	var data  = ev.dataTransfer.getData('text/html');
+	// 	ev.target.appendChild(document.getElementById(data));
+	// };
+
+	// this.dragover = function (ev){
+	// 	ev.preventDefault();
+	// };
+
+
+
+	this.clicked = function (set){
 		console.log("clicked");
+		console.log("Set: " + set)
 		newSets.push(set);
-		console.log(newSets)
+		console.log("new sets: "+ newSets);
+		console.log("selectedSets: " +selectedSets);
 	}
 });
