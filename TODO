@@ -1,0 +1,5 @@
+Next step
+
+add the vanilla drag.js setup in the working prototype
+require both files within eachother
+try to push the element to the selected list from the drop() method

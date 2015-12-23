@@ -1,8 +1,9 @@
 var app 		= angular.module('homepage', []);
-var operations 	= require('./operations.js');
-var setEngine 	= require('./setEngine.js');
-var drag 		= require('./drag.js');
+var operations 	= require('../../operations.js');
+var setEngine 	= require('../../setEngine.js');
+var dragFile 	= require('./drag.js');
 
+var oldSets, newSets, elements, selectedSets;
 
 app.controller("proofController", function($scope){
 	this.oldSets	 = [];
@@ -10,9 +11,7 @@ app.controller("proofController", function($scope){
 	this.newSets	 = [];
 	this.selectedSets = [];
 	this.groupname = 'group';
-	this.drag = drag.drag;
-	this.dragover = drag.dragover;
-	this.drop = drag.drop;
+
 
 	var A = new setEngine.Set(this.groupname, 'A');
 	var B = new setEngine.Set(this.groupname, 'B');
@@ -20,8 +19,9 @@ app.controller("proofController", function($scope){
 	var x = new setEngine.Element('x', A);
 	var y = new setEngine.Element('y', B);
 	var z = new setEngine.Element('z', C);
-	var P = new SetEngine.Set('selected', 'P');
+	var P = new setEngine.Set('selected', 'P');
 
+	this.selectedSets.push(P);
 	this.oldSets.push(A);
 	this.oldSets.push(B);
 	this.oldSets.push(C);
@@ -29,7 +29,18 @@ app.controller("proofController", function($scope){
 	this.elements.push(x);
 	this.elements.push(y);
 	this.elements.push(z);
-
-	this.selectedSets.push(P);
+	
+	oldSets = this.oldSets;
+	newSets = this.newSets;
+	selectedSets = this.selectedSets;
+	elements = this.elements;	
 
 });
+
+
+module.exports={
+	oldSets:oldSets,
+	newSets:newSets,
+	selectedSets:selectedSets,
+	elements:elements
+}

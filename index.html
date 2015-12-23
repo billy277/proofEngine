@@ -19,17 +19,18 @@
 
 		<div id="old">
 			<h2>Existing SETS</h2>
-			<div ng-repeat="set in pC.oldSets track by $index">{{set.equivalents[0]}}</div>
+			<div id="{{set.equivalents[0]}}" ng-repeat="set in pC.oldSets track by $index" class="sets">{{set.equivalents[0]}}</div>
 		</div>	
 		<div id="elem">
 			<h2>Elements</h2>
-			<div ng-repeat="element in pC.elements track by $index" >{{element.name}}</div>
+			<div id="{{element.name}}" ng-repeat="element in pC.elements track by $index" class="elements" >{{element.name}}</div>
 		</div>
 		<div id="new">
 			<h2>Created SETS</h2>
-			<div ng-repeat="set in newSets track by $index">{{set.equivalents[0]}}</div>
+			<div id="{{set.eqivalents[0]}}" ng-repeat="set in pC.newSets track by $index" class="sets">{{set.equivalents[0]}}</div>
 		</div>
 		<div id="bar">
+			<div id="{{set.equivalents[0]}}" ng-repeat="set in pC.selectedSets" class="emptyslot"></div>
 			<button>putIn</button>
 			<button>Union</button>
 			<button>tester</button>

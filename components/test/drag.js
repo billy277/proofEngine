@@ -1,6 +1,13 @@
+var app = require('./app.js');
+var setEngine 	= require('../../setEngine.js');
+
 function drag(ev){
 	ev.dataTransfer.setData('text', ev.target.id);
 	console.log("drag fired");
+	var X = new setEngine.set('selected', 'X');
+	app.selectedSets.push(X);
+
+
 };
 
 function drop(ev){
