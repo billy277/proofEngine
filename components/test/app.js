@@ -1,9 +1,17 @@
 var app 		= angular.module('homepage', []);
 var operations 	= require('../../operations.js');
 var setEngine 	= require('../../setEngine.js');
-var dragFile 	= require('./drag.js');
 
-var oldSets, newSets, elements, selectedSets;
+var dragover = function(ev){
+	ev.preventDefault();
+	console.log("dragover fired");
+};
+
+var drag = function(ev){
+	ev.dataTransfer.clearData()
+	ev.dataTransfer.setData('text', ev.target.id);
+	console.log("drag fired");
+};
 
 app.controller("proofController", function($scope){
 	this.oldSets	 = [];
@@ -30,17 +38,16 @@ app.controller("proofController", function($scope){
 	this.elements.push(y);
 	this.elements.push(z);
 	
-	oldSets = this.oldSets;
-	newSets = this.newSets;
-	selectedSets = this.selectedSets;
-	elements = this.elements;	
+	this.drop = function(ev){
+		ev.preventDefault();
+		var data = ev.dataTransfer.getData('text');
+		$scope.pC.selectedSets.push($scope.pC.oldSets.splice(index, 1)[0]);
+		$scope.$apply();
+	}
+
+	
+
+
 
 });
 
-
-module.exports={
-	oldSets:oldSets,
-	newSets:newSets,
-	selectedSets:selectedSets,
-	elements:elements
-}

@@ -4,7 +4,7 @@
 	<title>Front End</title>
 	<script type="text/javascript" src="../../angular.js"></script>
 	<link rel="stylesheet" type="text/css" href="../../style.css">
-	<script type="text/javascript" src="./bundle2.js"></script>
+	<script type="text/javascript" src="./bundle.js"></script>
 	<!-- // <script type="text/javascript" src="./drag.js"></script> -->
 </head>
 <body ng-app="homepage">
@@ -30,7 +30,7 @@
 			<div id="{{set.eqivalents[0]}}" ng-repeat="set in pC.newSets track by $index" class="sets" draggable="true" ondragstart="drag(event)">{{set.equivalents[0]}}</div>
 		</div>
 		<div id="bar">
-			<div id="{{set.equivalents[0]}}" ng-repeat="set in pC.selectedSets" class="emptyslot" ondragover="dragover(event)" ondrop="drop(event)"></div>
+			<div id="dropspot1" class="emptyslot" ondragover="dragover(event)" ondrop="angular.element(getElementById('dropspot1')).scope().pC.drop(event)"></div>
 			<button>putIn</button>
 			<button>Union</button>
 			<button>tester</button>
