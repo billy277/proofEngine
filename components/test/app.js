@@ -61,10 +61,23 @@ app.controller("proofController", function($scope){
 		}
 		
 		console.log("drop FIRED");
-	}
+	};
 
 	
+	this.unioncall = function(){
+		
+		var unionset = union($scope.pC.selectedSets[0].equivalents[0]+'U'+$scope.pC.selectedSets[1].equivalents[0],$scope.pC.selectedSets[0],$scope.pC.selectedSets[1]);
+		console.log("Unionset: "+unionset);
+		$scope.pC.newSets.push(unionset);
+		$scope.pC.oldSets.push($scope.pC.selectedSets.splice(0,2)[0]);
+		$scope.$apply();
+		console.log("new sets are as follows: "+$scope.pC.newSets)
 
+	};
+
+	this.putIncall = function(){
+
+	}
 
 
 });
