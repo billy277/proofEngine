@@ -38,7 +38,7 @@
 			<div id="dropspot1" class="emptyslot" ondragover="dragover(event)" ondrop="angular.element(getElementById('dropspot1')).scope().pC.drop(event)">
 				<div ng-repeat="set in pC.selectedSets track by $index" class="sets selectedSets" id="{{set.equivalents[0]}}">{{set.equivalents[0]}}{{set.name}}</div>
 			</div>
-			<button ng-click="">putIn</button>
+			<button id="putinbutton" onclick="angular.element(getElementById('putinbutton')).scope().pC.putIncall()">putIn</button>
 			<button id= "unionButton" onclick="angular.element(getElementById('unionButton')).scope().pC.unioncall()">Union</button>
 			<button>tester</button>
 		</div>

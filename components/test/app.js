@@ -49,6 +49,7 @@ app.controller("proofController", function($scope){
 
 		if(set=="oldSets"){
 			$scope.pC.selectedSets.push($scope.pC.oldSets.splice(index, 1)[0]);
+			console.log($scope.pC.oldSets);
 			$scope.$apply();
 		}
 		else if (set=="elements"){
@@ -69,14 +70,32 @@ app.controller("proofController", function($scope){
 		var unionset = union($scope.pC.selectedSets[0].equivalents[0]+'U'+$scope.pC.selectedSets[1].equivalents[0],$scope.pC.selectedSets[0],$scope.pC.selectedSets[1]);
 		console.log("Unionset: "+unionset);
 		$scope.pC.newSets.push(unionset);
-		$scope.pC.oldSets.push($scope.pC.selectedSets.splice(0,2)[0]);
+		console.log("selectedsets: "+ $scope.pC.selectedSets.length);
+		console.log("oldSets: "+ $scope.pC.oldSets);
+		$scope.pC.oldSets.push($scope.pC.selectedSets.splice(0,$scope.pC.selectedSets.length)[0]);
 		$scope.$apply();
 		console.log("new sets are as follows: "+$scope.pC.newSets)
 
 	};
 
 	this.putIncall = function(){
+		if($scope.pC.selectedSets[0].equivalents[0]!= null){
+			$scope.pC.selectedSets[0].putIn($scope.pC.selectedSets[1]);
+			// console.log($scope.pC.selectedSets[0]);
+			$scope.pC.newSets.push($scope.pC.selectedSets[0]);
+			$scope.pC.oldSets.push($scope.pC.selectedSets.splice(0,1)[0]);
+			$scope.pC.elements.push($scope.pC.selectedSets.splice(1,1)[0]);
+			$scope.$apply();
 
+		}
+		else{
+			$scope.pC.selectedSets[1].putIn($scope.pC.selectedSets[0]);
+			// console.log($scope.pC.selectedSets[1]);
+			$scope.pC.newSets.push($scope.pC.selectedSets[1]);
+			$scope.pC.oldSets.push($scope.pC.selectedSets.splice(1,1)[0]);
+			$scope.pC.elements.push($scope.pC.selectedSets.splice(0,1)[0]);
+			$scope.$apply();
+		}
 	}
 
 
